@@ -29,11 +29,17 @@ namespace Diary.Win
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tvCategory = new System.Windows.Forms.TreeView();
+            this.cmsCategory = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiCategoryCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCategoryModify = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCategoryDelete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.cmsCategory.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -44,20 +50,52 @@ namespace Diary.Win
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            this.splitContainer1.Panel1.Controls.Add(this.tvCategory);
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
             // 
-            // treeView1
+            // tvCategory
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tvCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.Location = new System.Drawing.Point(3, 3);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(260, 444);
-            this.treeView1.TabIndex = 1;
+            this.tvCategory.ContextMenuStrip = this.cmsCategory;
+            this.tvCategory.Location = new System.Drawing.Point(0, 0);
+            this.tvCategory.Name = "tvCategory";
+            this.tvCategory.Size = new System.Drawing.Size(266, 450);
+            this.tvCategory.TabIndex = 1;
+            // 
+            // cmsCategory
+            // 
+            this.cmsCategory.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCategoryCreate,
+            this.tsmiCategoryModify,
+            this.tsmiCategoryDelete});
+            this.cmsCategory.Name = "cmsCategory";
+            this.cmsCategory.Size = new System.Drawing.Size(101, 70);
+            this.cmsCategory.Opening += new System.ComponentModel.CancelEventHandler(this.cmsCategory_Opening);
+            // 
+            // tsmiCategoryCreate
+            // 
+            this.tsmiCategoryCreate.Name = "tsmiCategoryCreate";
+            this.tsmiCategoryCreate.Size = new System.Drawing.Size(100, 22);
+            this.tsmiCategoryCreate.Text = "新建";
+            this.tsmiCategoryCreate.Click += new System.EventHandler(this.tsmiCategoryCreate_Click);
+            // 
+            // tsmiCategoryModify
+            // 
+            this.tsmiCategoryModify.Name = "tsmiCategoryModify";
+            this.tsmiCategoryModify.Size = new System.Drawing.Size(100, 22);
+            this.tsmiCategoryModify.Text = "修改";
+            this.tsmiCategoryModify.Click += new System.EventHandler(this.tsmiCategoryModify_Click);
+            // 
+            // tsmiCategoryDelete
+            // 
+            this.tsmiCategoryDelete.Name = "tsmiCategoryDelete";
+            this.tsmiCategoryDelete.Size = new System.Drawing.Size(100, 22);
+            this.tsmiCategoryDelete.Text = "删除";
+            this.tsmiCategoryDelete.Click += new System.EventHandler(this.tsmiCategoryDelete_Click);
             // 
             // Form1
             // 
@@ -70,6 +108,7 @@ namespace Diary.Win
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.cmsCategory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -77,7 +116,11 @@ namespace Diary.Win
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tvCategory;
+        private System.Windows.Forms.ContextMenuStrip cmsCategory;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCategoryCreate;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCategoryModify;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCategoryDelete;
     }
 }
 
