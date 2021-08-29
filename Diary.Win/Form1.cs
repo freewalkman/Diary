@@ -22,6 +22,7 @@ namespace Diary.Win
             MessageBox.Show("新建");
         }
 
+
         private void tsmiCategoryModify_Click(object sender, EventArgs e)
         {
             MessageBox.Show("修改");

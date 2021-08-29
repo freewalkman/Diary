@@ -2,11 +2,16 @@
 
 namespace Diary.Model
 {
-    class Category
+    public class Category
     {
         public int Id;
         public string Name;
         public int ParentId;
+
+        /// <summary>
+        /// 是否有子类
+        /// </summary>
+        public bool HasChild;
 
         /// <summary>
         /// 分类类型
@@ -25,4 +30,6 @@ namespace Diary.Model
         /// </summary>
         public string Remark;
     }
+
+    
 }
