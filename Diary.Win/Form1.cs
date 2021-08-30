@@ -17,9 +17,36 @@ namespace Diary.Win
             InitializeComponent();
         }
 
+        //测试数据
+        //List<Model.Category> categories = new List<Model.Category>();
+
         private void tsmiCategoryCreate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("新建");
+            //MessageBox.Show("新建");
+            Model.Category model = new Model.Category()
+            {
+                Name = "测试",
+                Id = 1,
+                ParentId = -1,
+                HasChild = false,
+                Type = "test"
+            };
+
+            TreeNode tn = new TreeNode()
+            {
+                Text = model.Name,
+                Tag = model,
+            };
+            if (tvCategory.SelectedNode == null)
+            {
+                tvCategory.Nodes.Add(tn);
+            }
+            else
+            {
+                tvCategory.SelectedNode.Nodes.Add(tn);
+                tvCategory.SelectedNode.Expand();
+            }
+            
         }
 
 
@@ -46,5 +73,19 @@ namespace Diary.Win
             //tsmiCategoryModify.Visible = hasSelected;
             //tsmiCategoryDelete.Visible = hasSelected;
         }
+
+        private void tvCategory_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Model.Category model = e.Node.Tag as Model.Category;
+                if (model != null)
+                {
+                    MessageBox.Show(model.Id.ToString());
+                }
+            }
+        }
+
+
     }
 }

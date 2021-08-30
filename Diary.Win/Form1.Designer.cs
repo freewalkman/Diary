@@ -30,12 +30,14 @@ namespace Diary.Win
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tvCategory = new System.Windows.Forms.TreeView();
             this.cmsCategory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiCategoryCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCategoryModify = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCategoryDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.imgsCategory = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -61,10 +63,14 @@ namespace Diary.Win
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvCategory.ContextMenuStrip = this.cmsCategory;
+            this.tvCategory.ImageIndex = 0;
+            this.tvCategory.ImageList = this.imgsCategory;
             this.tvCategory.Location = new System.Drawing.Point(0, 0);
             this.tvCategory.Name = "tvCategory";
+            this.tvCategory.SelectedImageIndex = 0;
             this.tvCategory.Size = new System.Drawing.Size(266, 450);
             this.tvCategory.TabIndex = 1;
+            this.tvCategory.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvCategory_NodeMouseClick);
             // 
             // cmsCategory
             // 
@@ -97,6 +103,15 @@ namespace Diary.Win
             this.tsmiCategoryDelete.Text = "删除";
             this.tsmiCategoryDelete.Click += new System.EventHandler(this.tsmiCategoryDelete_Click);
             // 
+            // imgsCategory
+            // 
+            this.imgsCategory.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imgsCategory.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgsCategory.ImageStream")));
+            this.imgsCategory.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgsCategory.Images.SetKeyName(0, "folder.png");
+            this.imgsCategory.Images.SetKeyName(1, "key.png");
+            this.imgsCategory.Images.SetKeyName(2, "text.png");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -121,6 +136,7 @@ namespace Diary.Win
         private System.Windows.Forms.ToolStripMenuItem tsmiCategoryCreate;
         private System.Windows.Forms.ToolStripMenuItem tsmiCategoryModify;
         private System.Windows.Forms.ToolStripMenuItem tsmiCategoryDelete;
+        private System.Windows.Forms.ImageList imgsCategory;
     }
 }
 
