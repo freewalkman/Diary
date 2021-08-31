@@ -81,11 +81,37 @@ namespace Diary.Win
                 Model.Category model = e.Node.Tag as Model.Category;
                 if (model != null)
                 {
-                    MessageBox.Show(model.Id.ToString());
+                    //MessageBox.Show(model.Id.ToString());
                 }
             }
         }
 
+        private void tvCategory_MouseDown(object sender, MouseEventArgs e)
+        {
 
+        }
+
+        private void tvCategory_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+
+            }
+        }
+
+        private void tvCategory_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (tvCategory.SelectedNode != null)
+                {
+                    Point ptMouse = PointToClient(MousePosition);
+                    if (!tvCategory.SelectedNode.Bounds.Contains(ptMouse))
+                    {
+                        tvCategory.SelectedNode = null;
+                    }
+                }
+            }
+        }
     }
 }

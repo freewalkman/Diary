@@ -71,6 +71,7 @@ namespace Diary.Win
             this.tvCategory.Size = new System.Drawing.Size(266, 450);
             this.tvCategory.TabIndex = 1;
             this.tvCategory.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvCategory_NodeMouseClick);
+            this.tvCategory.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tvCategory_MouseUp);
             // 
             // cmsCategory
             // 
