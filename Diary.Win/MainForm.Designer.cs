@@ -1,7 +1,7 @@
 ﻿
 namespace Diary.Win
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,7 +30,7 @@ namespace Diary.Win
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tvCategory = new System.Windows.Forms.TreeView();
             this.cmsCategory = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -70,6 +70,7 @@ namespace Diary.Win
             this.tvCategory.SelectedImageIndex = 0;
             this.tvCategory.Size = new System.Drawing.Size(266, 450);
             this.tvCategory.TabIndex = 1;
+            this.tvCategory.TabStop = false;
             this.tvCategory.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvCategory_NodeMouseClick);
             this.tvCategory.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tvCategory_MouseUp);
             // 
@@ -113,14 +114,14 @@ namespace Diary.Win
             this.imgsCategory.Images.SetKeyName(1, "key.png");
             this.imgsCategory.Images.SetKeyName(2, "text.png");
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "私人日记";
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);

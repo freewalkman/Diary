@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Diary.Win
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -22,7 +22,11 @@ namespace Diary.Win
 
         private void tsmiCategoryCreate_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("新建");
+            TreeNode tn_select = tvCategory.SelectedNode;
+
+            CategoryManagerForm form = new CategoryManagerForm();
+            if (form.ShowDialog() != DialogResult.OK) return;
+
             Model.Category model = new Model.Category()
             {
                 Name = "测试",
@@ -37,16 +41,15 @@ namespace Diary.Win
                 Text = model.Name,
                 Tag = model,
             };
-            if (tvCategory.SelectedNode == null)
+            if (tn_select == null)
             {
                 tvCategory.Nodes.Add(tn);
             }
             else
             {
-                tvCategory.SelectedNode.Nodes.Add(tn);
-                tvCategory.SelectedNode.Expand();
+                tn_select.Nodes.Add(tn);
+                tn_select.Expand();
             }
-            
         }
 
 
