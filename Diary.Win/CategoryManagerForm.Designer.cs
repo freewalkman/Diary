@@ -72,11 +72,13 @@ namespace Diary.Win
             // 
             // cbxParent
             // 
+            this.cbxParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxParent.FormattingEnabled = true;
             this.cbxParent.Location = new System.Drawing.Point(88, 52);
             this.cbxParent.Name = "cbxParent";
             this.cbxParent.Size = new System.Drawing.Size(380, 25);
             this.cbxParent.TabIndex = 2;
+            this.cbxParent.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbxParent_DrawItem);
             // 
             // lblType
             // 
@@ -89,6 +91,7 @@ namespace Diary.Win
             // 
             // cbxType
             // 
+            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxType.FormattingEnabled = true;
             this.cbxType.Location = new System.Drawing.Point(88, 92);
             this.cbxType.Name = "cbxType";
@@ -135,7 +138,7 @@ namespace Diary.Win
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(44, 17);
             this.lblRemark.TabIndex = 0;
-            this.lblRemark.Text = "描述：";
+            this.lblRemark.Text = "备注：";
             // 
             // tbxRemark
             // 
