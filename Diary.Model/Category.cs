@@ -68,7 +68,7 @@ namespace Diary.Model
         /// </summary>
         /// <param name="categories"></param>
         /// <returns></returns>
-        int getIndexByParentId(List<Category> categories)
+        int get_index_by_parentId(List<Category> categories)
         {
             int index = 0;
             foreach (Category category in categories)
@@ -82,6 +82,7 @@ namespace Diary.Model
             return index;
         }
 
+
         /// <summary>
         /// 将categories按深度和ShowOrder排序，并计算每个数据的深度
         /// </summary>
@@ -89,8 +90,6 @@ namespace Diary.Model
         /// <returns></returns>
         static public List<Category> Sort(List<Category> categories)
         {
-            return categories;
-
             List<Category> return_categories = new List<Category>();
 
             //计算所有节点的深度，并按深度排序，深度相等的按显示顺序排序
@@ -149,7 +148,7 @@ namespace Diary.Model
         }
 
         /// <summary>
-        /// 提取当前深度的所有类别
+        /// 提取指定深度的所有类别
         /// </summary>
         /// <param name="parentId"></param>
         /// <param name="categories"></param>
@@ -182,7 +181,7 @@ namespace Diary.Model
         {
             if (from_categories.Count > 0)
             {
-                int index = from_categories[0].getIndexByParentId(to_categories);
+                int index = from_categories[0].get_index_by_parentId(to_categories);
                 to_categories.InsertRange(index + 1, from_categories);
             }
         }

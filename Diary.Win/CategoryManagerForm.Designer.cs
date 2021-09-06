@@ -72,11 +72,12 @@ namespace Diary.Win
             // 
             // cbxParent
             // 
+            this.cbxParent.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbxParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxParent.FormattingEnabled = true;
             this.cbxParent.Location = new System.Drawing.Point(88, 52);
             this.cbxParent.Name = "cbxParent";
-            this.cbxParent.Size = new System.Drawing.Size(380, 25);
+            this.cbxParent.Size = new System.Drawing.Size(380, 24);
             this.cbxParent.TabIndex = 2;
             this.cbxParent.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbxParent_DrawItem);
             // 

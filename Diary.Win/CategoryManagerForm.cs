@@ -65,10 +65,6 @@ namespace Diary.Win
 
         private void cbxParent_DrawItem(object sender, DrawItemEventArgs e)
         {
-            return;
-            //e.Graphics
-            if (e.Index < 0) return;
-
             e.DrawBackground();
             e.DrawFocusRectangle();
 
@@ -77,7 +73,7 @@ namespace Diary.Win
             if (category == null) return;
 
             string text = "";
-            for (int i=1; i<=category.Depth; i++)
+            for (int i = 1; i <= category.Depth; i++)
             {
                 text += "    ";
             }
