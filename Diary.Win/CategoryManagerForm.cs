@@ -17,8 +17,20 @@ namespace Diary.Win
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 用于窗体间数据传递
+        /// </summary>
+        public Model.Category CategoryData = new Model.Category();
+
         private void btnOK_Click(object sender, EventArgs e)
         {
+            CategoryData.Name = tbxName.Text;
+            CategoryData.ParentId = (int)cbxParent.SelectedValue;
+            CategoryData.Type = cbxType.SelectedValue.ToString();
+            CategoryData.ShowOrder = int.Parse(tbxShowOrder.Text);
+            CategoryData.Description = tbxDescription.Text;
+            CategoryData.Remark = tbxRemark.Text;
+
             DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -61,6 +73,27 @@ namespace Diary.Win
             cbxType.DisplayMember = "Item1";
             cbxType.ValueMember = "Item2";
             cbxType.SelectedValue = "Normal";
+
+            //初始化控件
+            if (CategoryData.Id > 0)
+            {
+                //修改
+                Text = string.Format("{0}(ID:{1})", Text, CategoryData.Id);
+                tbxName.Text = CategoryData.Name;
+                cbxParent.SelectedValue = CategoryData.ParentId;
+                cbxType.SelectedValue = CategoryData.Type;
+                tbxShowOrder.Text = CategoryData.ShowOrder.ToString();
+                tbxDescription.Text = CategoryData.Description;
+                tbxRemark.Text = CategoryData.Remark;
+            }
+            else
+            {
+                //新建
+                Text = string.Format("{0}(新建)", Text);
+                tbxShowOrder.Text = "99";
+                cbxType.SelectedValue = 0;
+                cbxType.SelectedValue = "Normal";
+            }
         }
 
         private void cbxParent_DrawItem(object sender, DrawItemEventArgs e)

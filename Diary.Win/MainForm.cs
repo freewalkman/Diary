@@ -27,15 +27,8 @@ namespace Diary.Win
             CategoryManagerForm form = new CategoryManagerForm();
             if (form.ShowDialog() != DialogResult.OK) return;
 
-            Model.Category model = new Model.Category()
-            {
-                Name = "测试",
-                Id = 1,
-                ParentId = -1,
-                HasChild = false,
-                Type = "test"
-            };
-
+            Model.Category model = form.CategoryData;
+            model.Id = tvCategory.Nodes.Count + 1;
             TreeNode tn = new TreeNode()
             {
                 Text = model.Name,
@@ -52,10 +45,64 @@ namespace Diary.Win
             }
         }
 
+        TreeNode find_by_id(TreeNode tnParent, int findId)
+        {
+            TreeNodeCollection tnc = (tnParent == null) ? tvCategory.Nodes : tnParent.Nodes;
+
+            foreach (TreeNode node in tnc)
+            {
+                Model.Category model = node.Tag as Model.Category;
+                if (model.Id == findId) return node;
+
+                if (node.Nodes.Count > 0)
+                {
+                    find_by_id(node, findId);
+                }
+            }
+            return null;
+        }
+
 
         private void tsmiCategoryModify_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("修改");
+            TreeNode tn_select = tvCategory.SelectedNode;
+            if (tn_select == null) return;
+
+            TreeNode oldParentNode = tn_select.Parent;
+
+            Model.Category model = tn_select.Tag as Model.Category;
+            if (model == null) return;
+
+            CategoryManagerForm form = new CategoryManagerForm();
+            form.CategoryData = model;
+            if (form.ShowDialog() != DialogResult.OK) return;
+
+            tn_select.Text = model.Name;
+
+            TreeNode newParentNode = find_by_id(null, model.ParentId);
+
+            if (oldParentNode != newParentNode)
+            {
+                //删除原节点
+                if (oldParentNode != null)
+                {
+                    oldParentNode.Nodes.Remove(tn_select);
+                }
+                else
+                {
+                    tvCategory.Nodes.Remove(tn_select);
+                }
+
+                //添加新节点
+                if (newParentNode != null)
+                {
+                    newParentNode.Nodes.Add(tn_select);
+                }
+                else
+                {
+                    tvCategory.Nodes.Add(tn_select);
+                }
+            }
         }
 
         private void tsmiCategoryDelete_Click(object sender, EventArgs e)
