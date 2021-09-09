@@ -163,5 +163,29 @@ namespace Diary.Win
                 }
             }
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                string filepath = string.Format("{0}Diray.db", Application.StartupPath);
+                if (!System.IO.File.Exists(filepath))
+                {
+                    MessageBox.Show("数据库文件不存在");
+                }
+                string connstring = string.Format("Data Source={0};", filepath);
+                Microsoft.Data.Sqlite.SqliteConnection conn = new Microsoft.Data.Sqlite.SqliteConnection(connstring);
+                conn.Open();
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    MessageBox.Show("数据库连接测试成功");
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

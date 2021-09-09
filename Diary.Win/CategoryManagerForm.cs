@@ -60,7 +60,6 @@ namespace Diary.Win
             cbxParent.DataSource = Model.Category.Sort(listCategory);
             cbxParent.DisplayMember = "Name";
             cbxParent.ValueMember = "Id";
-            cbxParent.SelectedValue = 0;
 
             //分类类型
             List<Tuple<string, string>> listType = new List<Tuple<string, string>>()
@@ -72,7 +71,6 @@ namespace Diary.Win
             cbxType.DataSource = listType;
             cbxType.DisplayMember = "Item1";
             cbxType.ValueMember = "Item2";
-            cbxType.SelectedValue = "Normal";
 
             //初始化控件
             if (CategoryData.Id > 0)
@@ -91,7 +89,7 @@ namespace Diary.Win
                 //新建
                 Text = string.Format("{0}(新建)", Text);
                 tbxShowOrder.Text = "99";
-                cbxType.SelectedValue = 0;
+                cbxParent.SelectedValue = 0;
                 cbxType.SelectedValue = "Normal";
             }
         }

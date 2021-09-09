@@ -122,6 +122,7 @@ namespace Diary.Win
             this.Controls.Add(this.splitContainer1);
             this.Name = "MainForm";
             this.Text = "私人日记";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
