@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Diary.BAL\Diary.BAL.csproj" />
     <ProjectReference Include="..\Diary.Model\Diary.Model.csproj" />
   </ItemGroup>
 

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diary.Win", "Diary.Win\Diar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diary.Model", "Diary.Model\Diary.Model.csproj", "{7E132A60-F414-4221-933F-44ABDA2F7A3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diary.BAL", "Diary.BAL\Diary.BAL.csproj", "{246ECF4A-6171-490A-83F5-F9509B140C2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{7E132A60-F414-4221-933F-44ABDA2F7A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E132A60-F414-4221-933F-44ABDA2F7A3D}.Release|x64.ActiveCfg = Release|Any CPU
 		{7E132A60-F414-4221-933F-44ABDA2F7A3D}.Release|x64.Build.0 = Release|Any CPU
+		{246ECF4A-6171-490A-83F5-F9509B140C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246ECF4A-6171-490A-83F5-F9509B140C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{246ECF4A-6171-490A-83F5-F9509B140C2D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{246ECF4A-6171-490A-83F5-F9509B140C2D}.Debug|x64.Build.0 = Debug|Any CPU
+		{246ECF4A-6171-490A-83F5-F9509B140C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246ECF4A-6171-490A-83F5-F9509B140C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{246ECF4A-6171-490A-83F5-F9509B140C2D}.Release|x64.ActiveCfg = Release|Any CPU
+		{246ECF4A-6171-490A-83F5-F9509B140C2D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

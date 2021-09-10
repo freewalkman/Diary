@@ -27,8 +27,13 @@ namespace Diary.Win
             CategoryManagerForm form = new CategoryManagerForm();
             if (form.ShowDialog() != DialogResult.OK) return;
 
-            Model.Category model = form.CategoryData;
-            model.Id = tvCategory.Nodes.Count + 1;
+            Model.Category model = Diary.BAL.Category.Insert(form.CategoryData);
+            if (model == null)
+            {
+                //新增失败
+                return;
+            }
+
             TreeNode tn = new TreeNode()
             {
                 Text = model.Name,
@@ -56,10 +61,18 @@ namespace Diary.Win
 
                 if (node.Nodes.Count > 0)
                 {
-                    find_by_id(node, findId);
+                    TreeNode tn = find_by_id(node, findId);
+                    if (tn != null) return tn;
                 }
             }
             return null;
+        }
+
+        Model.Category get_select_category()
+        {
+            if (tvCategory.SelectedNode == null) return null;
+            if (tvCategory.SelectedNode.Tag == null) return null;
+            return tvCategory.SelectedNode.Tag as Model.Category;
         }
 
 
@@ -76,6 +89,12 @@ namespace Diary.Win
             CategoryManagerForm form = new CategoryManagerForm();
             form.CategoryData = model;
             if (form.ShowDialog() != DialogResult.OK) return;
+
+            if (!BAL.Category.Modify(model))
+            {
+                //修改失败
+                return;
+            }
 
             tn_select.Text = model.Name;
 
@@ -109,7 +128,14 @@ namespace Diary.Win
         {
             if (MessageBox.Show("确定要删除吗？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("删除");
+                Model.Category model = get_select_category();
+                if (model != null)
+                {
+                    if (BAL.Category.Delete(model.Id))
+                    {
+                        tvCategory.SelectedNode.Remove();
+                    }
+                }
             }
         }
 
@@ -185,6 +211,16 @@ namespace Diary.Win
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+
+            List<Model.Category> categories = BAL.Category.query_all();
+            categories = Model.Category.Sort(categories);
+            foreach (Model.Category category in categories)
+            {
+                TreeNode tn_parent = find_by_id(null, category.ParentId);
+                TreeNodeCollection tnc = (tn_parent == null) ? tvCategory.Nodes : tn_parent.Nodes;
+                TreeNode tn = tnc.Add(category.Name);
+                tn.Tag = category;
             }
         }
     }
